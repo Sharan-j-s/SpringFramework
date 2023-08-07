@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+ 	<!-- Implementing LifeCycle methods of spring bean using XML -->
+ 	<bean class="com.springcore.lifecycle.Samosa" name="s1" 
+ 		init-method="init" destroy-method="destroy" >
+ 		<property name="price" value="10" />
+ 	</bean>
+ 	
+ 	<!-- Implementing Bean LifeCycle using interfaces InitializingBean & DisposableBean -->
+ 	<bean class="com.springcore.lifecycle.Pepsi" name="p1">
+ 		<property name="price" value="5" />
+ 	</bean>
+ 	
+ 	
+ 	<!-- Implementing Bean LifeCycle using Annotations @PostConstruct @PreDestroy -->
+ 	
+ 	<context:annotation-config /> <!-- this is used to enable all annotations in java -->
+ 	
+ 	<!-- If we just want to use specific annotations and not everything then we can create a bean for that particular annotation using the class
+ 		and package name like below mentioned (ctrl+shift+t and type CommonAnnotationBeanPostProcessor, goto that, you will get package name)-->
+ 	<!-- 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/>  -->
+ 	
+ 	<bean class="com.springcore.lifecycle.Example" name="example">
+ 		<property name="subject" value="Maths" />
+ 	</bean>
+ 	
+ 
+ </beans>

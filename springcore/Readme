@@ -1,0 +1,160 @@
+Project Creation Method
+
+ 1) Create maven project
+ 2) Adding dependencies => spring core, spring context
+ 3) creating beans - java pojo => Student class
+ 4) creating configuration file => config.xml
+ 5) setter injection
+ 6) Main class : which can pull the object and use
+
+------------------------------------------------------------- 
+
+For Primitive Types:
+ 
+ Below are the three ways we can specify the values for setter injection
+  
+  1) <property name="">
+  		<value>value</value>
+  	 </property>
+  
+  2) <property name="" value="" />
+  
+  3) bean p:property:Value />
+
+--------------------------------------------------------------
+  
+For Collection Types:
+
+ 1) List
+ 
+ 	<bean>
+ 		<property name="">
+ 		
+ 		<list>
+ 			<value>10</value>
+ 			<value>1023</value>
+ 			<value>10554</value>
+ 			<value>1024</value>
+ 			<null/>
+ 		</list>
+ 		
+ 		</property>
+ 	</bean>
+ 	
+ 2) Set
+ 
+ 	<bean>
+ 		<property name="">
+ 		
+ 		<set>
+ 			<value>10</value>
+ 			<value>1023</value>
+ 			<value>10554</value>
+ 			<value>1024</value>
+ 		</set>
+ 		
+ 		</property>
+ 	</bean>
+ 	
+ 3) Map
+ 
+ 	<bean>
+ 		<property name="">
+ 		
+ 		<map>
+ 			<entry key="java" value="2month" />
+ 			<entry key="python" value="1month" />
+ 		</map>
+ 		
+ 		</property>
+ 	</bean>
+ 	
+
+4) Properties
+ 	
+ 	<bean>
+ 		<property name="">
+ 		
+ 		<props>
+ 			<prop key="name">durgesh</prop>
+ 			<prop key="channelName">Learncodewith Durgesh</prop>
+ 		</props>
+ 		
+ 		</property>
+ 	</bean>
+
+---------------------------------------------------------------------	
+
+Reference Type:
+
+A -> A is dependent on B (A requires B's reference in order to complete task)
+
+Reference Inject : 
+
+B		
+
+	<bean>
+			<property name="">
+				<ref bean="b">
+			</property>
+	</bean>
+	
+---------------------------------------------------------------------
+
+Constructor Injection:
+	Spring supports creating objects using parameterized constructor
+
+	<constructor-args>
+		<value>b </value>
+	</constructor-args>
+	
+	<constructor-args>
+		<ref bean="" />
+	</constructor-args>
+	
+	
+------------------------------------------------------------------------
+
+Autowiring
+
+	There are 2 types:
+		1) XML [Autowiring modes - no, byName, byType, constructor, autodetect (deprecated since Spring 3)]
+		2) Annotations [@Autowired]
+	
+	Advantages:
+		1) Automatic
+		2) less code
+		
+	Disadvantages:
+		1) No control of programmer
+		2) It can't be used for primitive and string values
+		
+-----------------------------------------------------------------------
+
+Bean Scopes 
+	1) Singleton
+	2) Prototype
+	3) Request
+	4) Session
+	5) GlobalSession
+
+Configure bean scope
+	1) XML => <bean class="" name="" scope="" />
+	2) Annotation =>
+						@Component
+						@Scope(" ")
+						Class Student
+						{
+					
+						}
+						
+------------------------------------------------------------------------
+
+How to invoke static method and variable?
+
+	method => T(class).method(param)
+	variable => T(class).variable
+
+How to create objects?
+	
+	new Object(value)

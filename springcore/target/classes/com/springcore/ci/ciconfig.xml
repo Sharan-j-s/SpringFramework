@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:c="http://www.springframework.org/schema/c"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+ <!-- // constructor injection we are doing -->
+ 
+ 	<bean class="com.springcore.ci.Certi" name="cer">
+ 		<constructor-arg>
+ 			<value>Java is very popular programming language</value>
+ 		</constructor-arg>
+ 	</bean>
+ 	
+ 	<!-- using c (not p schema) schema also we can do constructor injection
+ 		<bean class="com.springcore.ci.Certi" name="cer" c:name="pyton programming language">
+ 		</bean>
+ 	 -->
+ 	
+ 	<bean class="com.springcore.ci.Person" name="person">
+ 		<constructor-arg value="Sharan" />
+ 		<constructor-arg value="12" type="int" />
+ 		<constructor-arg ref="cer"/>
+ 		
+ 		<!-- mentioned type=int above to resolve ambiguity, if there are more than one constructor,
+ 			it might take the value 12 as a string, so we should mention that it is an integer,
+ 			if there is only one constructor, then by default it will take the correct type. -->
+ 			
+ 		<!-- we can also inject other objects using ref attribute -->	
+ 	</bean>
+ 	
+ 	<!-- To understand ambiguity issue we created Addition class to doing constructor injection here.
+ 		we can mention attributes such as type="int" to mention the specific type of the input, also
+ 		index="0" to inject to the first element present int the constructor -->
+ 	<bean class="com.springcore.ci.Addition" name="add">
+ 		<constructor-arg value="12" />
+ 		<constructor-arg value="34" />
+ 	</bean>
+ 
+ </beans>
