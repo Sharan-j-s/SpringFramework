@@ -1,3 +1,16 @@
+To revise the concepts, study in this order
+	1) com.springcore
+	2) com.springcore.collections
+	3) com.springcore.ref
+	4) com.springcore.ci
+	5) com.springcore.lifecycle
+	6) com.springcore.auto.wire
+	7) com.springcore.auto.wire.annotation
+	8) com.springcore.standalone.collections
+	9) com.springcore.stereotype
+	10) com.springcore.spel
+	11) com.springcore.javaconfig
+
 Project Creation Method
 
  1) Create maven project
