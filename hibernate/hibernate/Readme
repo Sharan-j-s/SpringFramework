@@ -1,0 +1,92 @@
+Hibernate Framework
+
+a) Hibernate is a java framework that simplifies the development of Java application to interact with the database.
+b) It is ORM (Object Relational Mapping) tool.
+c) It is an Open source, lightweight.
+d) It is a non-invasive framework, means it won't forces the programmers to extend/implement any class/interface.
+e) Any type of application can build with Hibernate Framework.
+
+Steps in hibernate
+
+	1) SessionFactory factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	2) Session session = factory.openSession();
+	3) Transaction txTransaction = session.beginTransaction();
+	4) session.save(someObject);
+	5) txTransaction.commit();
+	6) session.close();		
+	7) factory.close();
+
+
+Fetch Data from DB in hibernate -- [com.framework.hibernate]
+
+1) get()
+	
+	a) get method of Hibernate Session returns null if object is not found in cache as well as on database.
+	b) get() involves database hit if object doesn't exists in Session Cache and 
+		returns a fully initialized object which may involve several database call.
+	c) use if you are not sure that object exists in db or not.
+	d) Ex:- Student student = (Student)session.load(Student.class, 106);
+
+2) load()
+	
+	a) load() throws ObjectNotFoundException if object is not found on cache as well as on database but never return null.
+	b) load() can return proxy in place and only initialize the object or hit the database if any method other than getId()
+		is called on persistent or entity object. This lazy initialization increases the performance.
+	c) use if you are sure that object exists.
+	d) Ex:- Address address = session.get(Address.class, 2);
+	
+
+Embeddable Annotation
+	
+	It is used get any class field in any other class or table, we can embed.
+	check - Student class with Certificate data member. & check EmDemo class.
+
+For mapping related things - onetoone, onetoMany  etc..
+	Check com.map package - onetoone
+	Check com.mapp.many package - onetomany & manytoone.
+	Check com.mapmany package - manytomany
+	
+
+FETCH TYPE
+
+1) Lazy - In lazy loading, associated data loads only when we explicitly call getter or size method.
+2) Eager - It is a design pattern in which data loading occurs on the spot.
+
+	Syntax with Example:-
+		
+			@OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+
+
+Hibernate/Persistence lifecycle states [Check com.states package for lifecycle]
+
+	1) Transient State
+	2) Persistent State
+	3) Detached State
+	4) Removed State
+
+
+HQL - Hibernate Query Language [To load complex data - Ex:- Join table, where clause, update clause, etc]
+
+	HQL										SQL
+1) Database Independent					1) Database dependent
+2) Easy to learn for programmer			2) Easy to learn for DBA
+3) Ex:- from Student					3) Ex:- Select * from Student
+4) Here Student is Entity Name			4) Here Student is Table Name
+
+
+Caching in Hibernate
+
+	Caching is a mechanism to enhance the performance of a Application.
+	Cache is used to reduce the number of database queries.
+	
+	Types :-
+		1) First Level Caching - It is associated with session object, It is by default provided.
+		2) Second Level Caching - It is associate with SessionFactory object, Need to manually enable this. 
+
+
+
+
+
+
+
+	

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- add hibernate configuration 3.0 dtd from online we can get it -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration>
+	<session-factory>
+	
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/myhiber</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">admin</property>
+	<!--	<property name="dialect">org.hibernate.dialect.MYSQLDialect</property>  this line is giving error  -->
+		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+		<property name="hbm2ddl.auto">update</property>  
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.region.factory_class">org.hibernate.cache.ehcache.internal.EhcacheRegionFactory</property>
+		
+		<!-- mapping the class, class attribute we are using because we are making annotation based configuration,
+			if it is xml based, then we need to use attribute resource="com.framework.hibernate.Student" -->
+		<mapping class="com.framework.hibernate.Student" />
+		<mapping class="com.framework.hibernate.Address" />
+		<mapping class="com.map.Question" />
+		<mapping class="com.map.Answer" />
+		<mapping class="com.mapp.many.Question" />
+		<mapping class="com.mapp.many.Answer" />
+		<mapping class="com.mapmany.Emp" />
+		<mapping class="com.mapmany.Project" />
+		<mapping resource="com/mapping/xml/Person.hbm.xml" />
+	
+	</session-factory>
+</hibernate-configuration>
