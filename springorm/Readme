@@ -1,0 +1,21 @@
+Spring ORM [Object Relational Mapping] [We are using spring with ORM tools such as Hibernate, Toplink, iBATIS]
+
+
+Advantages of using spring with ORM tools
+	
+	1) Less coding is required
+	2) Easy to test
+	3) Better exception handling
+	4) Integrated transaction management
+
+	
+How to work with Spring ORM? (vvvImp) [Refer to the attached design pattern image = How to.jpg]
+	
+	 We have HibernateTemplate which contains methods like Save, Update, Insert, Get, loadAll etc.
+	
+	 ProductDao (Dao) ---> HibernateTemplate ---> SessionFactory (Interface) <--- LocalSessionFactoryBean {We need to provide
+																		DataSource, Hibernate Properties, Annotated Class }
+		
+	 Here, SessionFactory is interface, So, we'll provide object of LocalSessionFactoryBean in SessionFactory interface																				
+
+
