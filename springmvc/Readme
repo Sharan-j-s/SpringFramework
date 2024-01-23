@@ -1,0 +1,112 @@
+Spring MVC
+
+1) A Spring MVC is sub framework of Spring Framework which is used to build a web application.
+2) It is build on the top of Servlet API.
+3) It follows the Model-View-Controller design pattern.
+4) It implements all the basic features of a core spring framework like Inversion of Control, Dependency Injection.
+
+
+why to use Spring MVC?
+
+1) Seperate each role model, view, controller etc.
+2) Powerful configuration.
+3) It is sub framework of Spring Framework. Use of Spring core features like IOC etc.
+4) Rapid Application Development.
+5) It is Flexible, easy to test and much features.
+
+--------------------------------------------------------------
+
+MVC Design Pattern - Way to organize the code in our application
+Model - Data
+View - Presents data to user
+Controller - Interface between model and view
+
+---------------------------------------------------------------
+
+Spring MVC Application Creation Steps
+
+1) Configure the dispatcher servlet in web.xml
+2) Create Spring Configuration File
+3) Configure View Resolver
+4) Create Controller
+5) Create a View to show(page)
+
+-----------------------------------------------------------------
+
+Sending data from controller to view
+
+Model										ModelAndView
+
+addAttribute(String key, Object value)		addObject(String key, Object value)
+
+Object ob = request.getAttribute("")
+
+----------------------------------------------------------------------
+
+Sending data from view to controller
+
+We can use HTML form to send data from view to controller
+
+In controller we get HttpServletRequest, where we can use getParameter("name of field")
+also we can use annotation like @RequestParam instead of getParameter and @ModelAttribute for entity class
+
+-----------------------------------------------------------------------
+
+Redirect in Spring MVC - [ Check ReController class for this implementation]
+
+0) HttpServletResponse
+
+1) redirect prefix
+
+	public String handle()
+	{
+		return "redirect:/url";
+	}
+
+2) redirect view
+
+	public RedirectView handler()
+	{
+		RedirectView r = new RedirectView();
+		r.setUrl("url");
+		return r;
+	}
+	
+
+--------------------------------------------------------------------------
+
+Check SpringMvcSearch for the small project based on search
+
+--------------------------------------------------------------------------
+
+We can use bindingresult in order to handle error in forms that's created by user. (checkk SpringMvcSearch)
+
+--------------------------------------------------------------------------
+
+PathVariable Annotation - It is used to bind method parameter to URI template variable (mostly useful when using RestAPIs)
+
+Ex:- (url - http:/localhost:8080/project/book/34)
+	
+	@RequestMapping("/book/{id}")
+	public String handler(@PathVariable("id")int id)
+	{
+	
+	}  
+
+----------------------------------------------------------------------------
+
+Spring MVC Interceptor - HandlerInterceptor Interface - HandlerInterceptorAdaptor Class
+
+ - Check web-inf/ resources / image - for screenshot of the Interceptor theory
+ 
+----------------------------------------------------------------------------
+
+check productcrudapp - web app based on spring mvc & Hibernate with crud operations
+
+---------------------------------------------------------------------------
+
+
+
+
+
+

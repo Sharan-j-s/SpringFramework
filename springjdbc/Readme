@@ -1,0 +1,72 @@
+Steps to connect with JDBC [Not Spring JDBC]
+
+1) Load the driver: [this can be done in 2 ways]
+
+	Class.forName("com.mysql.jdbc.Driver");
+	
+	or
+	
+	DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
+2) Create a Connection:
+	
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbname","username","password");
+
+3) Create a query, Statement, PreparedStatement, CallableStatement // Use Statement - if it is a simple query
+																	//Use PreparedStatmenet - if it is a dynamic query, where we have question marks and everything
+																   // Use CallableStatement - if it is a procedure or something.
+	
+	String q = "select * from students";
+	
+	Statement stmt = con.createStatement();
+	
+	ResultSet set = stmt.executeQuery(q); // executeQuery is for select query or we are expecting some data from this query then use executeQuery,
+										     else we can use executeUpdate for insert, update, delete, all those things.
+										    
+4) Process the data:
+	
+	while(set.next())
+	{
+		int id = set.getInt(1); // 1 -> column Num or getInt("studentId") studentId -> column Name
+		String name = set.getString("studentName");
+		Sysout(id);
+	} 
+
+5) Close the connection:
+
+	conn.close();
+	
+
+
+
+
+Dependencies Required (Use same version for spring related dependencies, 
+					   for mysql connector, use the same version as the mysql workbench software that you are using)
+	
+	1) spring-core
+	2) spring-context
+	3) spring-jdbc
+	4) mysql-connector-j
+	
+For this exercise
+	
+	1) create a table named student with id, name, city as columns in mysql
+	2) create a package com.spring.jdbc.entities with a class name student with id, name and city as members
+	3) create a package com.spring.jdbc.dao with StudentDao as an interface where we declare methods such as insert, update & delete
+	4) within the dao package create another class name StudentDaoImpl which implements the methods in interface, in that class create
+		a member name jdbctemplate, create getters and setters.
+
+--------------------------------------------------------------------------------------------------------
+
+Selecting Data using Spring JDBC
+ 
+ 1) If we are selecting a single row then use this (Here sql means select query, rowMapper is an interface which converts result set to object)
+ 	
+ 	 public T queryForObject(String sql, RowMapper<T> rowMapper, Object args)
+ 
+ 2) If we need many rows
+ 	
+ 	public List<T> query(String sql, RowMapper<T> rowMapper)
+
+
+	
